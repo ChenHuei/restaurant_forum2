@@ -49,7 +49,7 @@ class Admin::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image)
     # 加上 require(:photo) 可以幫我們確認使用者上傳的參數名為 photo，以防邏輯出錯
     # 透過 permit(:name, :opening_hours, :tel, :address, :description) 
     # 過濾餐廳名字、營業時間等資料，主要是為了防止有人傳入不相干的惡意資訊。這是一個 Rails 內建的安全性功能，稱為 strong parameters。
