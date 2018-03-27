@@ -3,13 +3,16 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
   # 我們先確保使用者有登入，才能拿到 User instance
   # 進而去驗證 instance 身上攜帶的 role 屬性，是否帶有 "admin" 的值
+  before_action :set_restaurant, only: [:show, :edit, :update]
+
+  def show
+  end
+
+  def edit
+  end
 
   def index
     @restaurants = Restaurant.all
-  end
-
-  def show
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def new
@@ -27,6 +30,16 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
+  def update
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = "restaurant was succeddfully updated."
+      redirect_to admin_restaurants_path(@restaurant)
+    else
+      flash.now[:alert] = "restaurant was failed to update."
+      render :edit
+    end
+  end
+
   private
 
   def restaurant_params
@@ -34,6 +47,10 @@ class Admin::RestaurantsController < ApplicationController
     # 加上 require(:photo) 可以幫我們確認使用者上傳的參數名為 photo，以防邏輯出錯
     # 透過 permit(:name, :opening_hours, :tel, :address, :description) 
     # 過濾餐廳名字、營業時間等資料，主要是為了防止有人傳入不相干的惡意資訊。這是一個 Rails 內建的安全性功能，稱為 strong parameters。
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 
 
