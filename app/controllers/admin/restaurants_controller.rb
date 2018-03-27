@@ -8,6 +8,10 @@ class Admin::RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def new
     @restaurant = Restaurant.new
   end
@@ -31,5 +35,6 @@ class Admin::RestaurantsController < ApplicationController
     # 透過 permit(:name, :opening_hours, :tel, :address, :description) 
     # 過濾餐廳名字、營業時間等資料，主要是為了防止有人傳入不相干的惡意資訊。這是一個 Rails 內建的安全性功能，稱為 strong parameters。
   end
+
 
 end
