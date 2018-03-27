@@ -3,7 +3,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
   # 我們先確保使用者有登入，才能拿到 User instance
   # 進而去驗證 instance 身上攜帶的 role 屬性，是否帶有 "admin" 的值
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -38,6 +38,12 @@ class Admin::RestaurantsController < ApplicationController
       flash.now[:alert] = "restaurant was failed to update."
       render :edit
     end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted."
   end
 
   private
