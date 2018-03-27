@@ -12,7 +12,7 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(10)
   end
 
   def new
