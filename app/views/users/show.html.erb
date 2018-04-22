@@ -34,7 +34,7 @@
         <div class="panel-body">
           <% @commented_restaurants.each do |restaurant| %>
           <%= link_to restaurant_path(restaurant) do %>
-          <div class="my-restaurnat">
+          <div class="my-restaurant">
             <h5><%= restaurant.name %></h5> 
             <div>
               <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
