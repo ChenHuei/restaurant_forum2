@@ -20,8 +20,6 @@ namespace :dev do
 
   task fake_user: :environment do
 
-    User.destroy_all
-
     20.times do |i|
       User.create!(
         name: FFaker::Animal.common_name,
@@ -34,8 +32,6 @@ namespace :dev do
   end
 
   task fake_comment: :environment do
-
-    Comment.destroy_all
 
     Restaurant.all.each do |restaurant|
       3.times do |i|
