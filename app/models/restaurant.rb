@@ -6,4 +6,7 @@ class Restaurant < ApplicationRecord
   # 屬性名稱的型態是 symbol，而 uploader 的名稱型態為 constant
   #（因為 PhotoUploader 也是一個 Class）
   validates_presence_of :name
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 end
