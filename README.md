@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Git Clone 步驟
 
-Things you may want to cover:
+bundle install
 
-* Ruby version
+rails db:migrate
+rails db:seed
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails dev:fake_restaurant
+rails dev:fake_user
+rails dev:fake_comment
