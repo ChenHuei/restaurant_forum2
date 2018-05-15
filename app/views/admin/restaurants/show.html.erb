@@ -6,7 +6,11 @@
     </div>
 
     <div class="col-md-4">
-      <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+      <% for img_id in 0..20 %>
+        <% if image_path(restaurant.image).include?('/'+img_id.to_s+'.jpg') %> ←由路徑判斷圖檔名
+          <%= image_tag('/seed_img/'+img_id.to_s+'.jpg', class: ooxx) %> ←顯示路徑改為public裡面的圖檔 
+        <% end %>
+      <% end %>
       <br>
       <div class="well">
         <ul class="list-unstyled">
